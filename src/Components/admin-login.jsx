@@ -42,12 +42,12 @@ export function AdminLogin() {
   });
 
   return (
-    <div className="d-flex justify-content-center align-items-center min-vh-90 ">
+    <div className="animate__animated animate__fadeInLeft d-flex justify-content-center align-items-center min-vh-90 ">
       <div
         className="bg-white p-4 p-md-5 m-3 rounded-3 shadow-lg"
         style={{ width: "100%", maxWidth: "400px" }}
       >
-        <h3 className="text-center fs-4 fw-bold text-danger">
+        <h3 className="animate__animated animate__rubberBand text-center fs-4 fw-bold text-danger">
           Sign in to Admin
         </h3>
 

@@ -8,12 +8,12 @@ export function VideoHome() {
       style={{ height: "80vh" }}
     >
       <Link to="/admin-login">
-        <Button className="mx-3 fw-bold fs-6" variant="contained" color="warning">
+        <Button className="animate__animated animate__fadeInLeft mx-3 fw-bold fs-6" variant="contained" color="warning">
           Admin Login
         </Button>
       </Link>
       <Link to="/user-login">
-        <Button className="fw-bold fs-6" variant="contained" color="success">
+        <Button className="animate__animated animate__fadeInRight fw-bold fs-6" variant="contained" color="success">
           User Login
         </Button>
       </Link>

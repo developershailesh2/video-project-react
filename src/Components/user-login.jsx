@@ -47,12 +47,14 @@ export function UserLogin() {
   });
 
   return (
-    <div className="d-flex justify-content-center align-items-center min-vh-90">
+    <div className="animate__animated animate__fadeInRight d-flex justify-content-center align-items-center min-vh-90">
       <div
         className="bg-light p-4 p-md-5 m-3 rounded-3 shadow-lg"
         style={{ width: "100%", maxWidth: "400px" }}
       >
-        <h3 className="text-start fs-4 text-dark">User Login</h3>
+        <h3 className="animate__animated animate__fadeInLeftBig text-start fs-4 text-dark">
+          User Login
+        </h3>
 
         <form onSubmit={formik.handleSubmit}>
           <dl className="mt-2">
@@ -102,7 +104,9 @@ export function UserLogin() {
               </Link>
             </dd>
             <dd>
-              <Link to='/'><Button className="bck-btn">Home</Button></Link>
+              <Link to="/">
+                <Button className="bck-btn">Home</Button>
+              </Link>
             </dd>
           </dl>
         </form>

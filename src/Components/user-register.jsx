@@ -48,91 +48,95 @@ export function UserRegistration() {
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-90">
       <div className="container-fluid">
-        <div className="w-75 w-md-100 mx-auto rounded">
-          <form className="row bg-light rounded-2 p-3 mt-4 shadow-lg" onSubmit={formik.handleSubmit}>
-              <div className="mt-3 mb-3 text-warning p-2 fw-semibold fs-2">User Registration</div>
+        <div className="animate__animated animate__fadeInUp w-75 w-md-100 mx-auto rounded-4">
+          <form
+            className="row bg-white rounded-2 p-4 mt-4 shadow-lg"
+            onSubmit={formik.handleSubmit}
+          >
+            <div className="animate__animated animate__backInUp mt-2 mb-3 text-warning p-2 fw-semibold fs-2">
+              User Registration
+            </div>
             <div className="col-md-6 mb-3">
-            <TextField
-                  className="form-control mb-2"
-                  variant="outlined"
-                  type="text"
-                  name="UserId"
-                  value={formik.values.UserId}
-                  label="User Id"
-                  onChange={formik.handleChange}
-                  fullWidth
-                />
-                <span className="mb-2 text-danger">{formik.errors.UserId}</span>
-            </div>  
-            
-
-            <div className="col-md-6 mb-3">
-            <TextField
-                  className="form-control mb-2"
-                  variant="outlined"
-                  type="text"
-                  onChange={formik.handleChange}
-                  name="UserName"
-                  value={formik.values.UserName}
-                  label="User Name"
-                  fullWidth
-                />
-                <span className="text-danger">{formik.errors.UserName}</span>
+              <TextField
+                className="form-control mb-2"
+                variant="outlined"
+                type="text"
+                name="UserId"
+                value={formik.values.UserId}
+                label="User Id"
+                onChange={formik.handleChange}
+                fullWidth
+              />
+              <span className="mb-2 text-danger">{formik.errors.UserId}</span>
             </div>
 
-              <div className="col-md-6 mb-3">
+            <div className="col-md-6 mb-3">
               <TextField
-                  className="form-control mb-2"
-                  variant="outlined"
-                  label="Password"
-                  name="Password"
-                  onChange={formik.handleChange}
-                  type="password"
-                  fullWidth
-                />
-                <span className="text-danger">{formik.errors.Password}</span>
-              </div>
+                className="form-control mb-2"
+                variant="outlined"
+                type="text"
+                onChange={formik.handleChange}
+                name="UserName"
+                value={formik.values.UserName}
+                label="User Name"
+                fullWidth
+              />
+              <span className="text-danger">{formik.errors.UserName}</span>
+            </div>
 
-              <div className="col-md-6 mb-3">
+            <div className="col-md-6 mb-3">
               <TextField
-                  className="form-control mb-2"
-                  type="email"
-                  label="Email"
-                  onChange={formik.handleChange}
-                  name="Email"
-                  variant="outlined"
-                  fullWidth
-                />
-                <span className="text-danger">{formik.errors.Email}</span>
-              </div>
+                className="form-control mb-2"
+                variant="outlined"
+                label="Password"
+                name="Password"
+                onChange={formik.handleChange}
+                type="password"
+                fullWidth
+              />
+              <span className="text-danger">{formik.errors.Password}</span>
+            </div>
 
-              <div className="col-md-12 mb-3">
+            <div className="col-md-6 mb-3">
               <TextField
-                  className="form-control mb-2"
-                  type="text"
-                  label="Mobile"
-                  onChange={formik.handleChange}
-                  name="Mobile"
-                  variant="outlined"
-                  fullWidth
-                />
-                 <span className="text-danger">{formik.errors.Mobile}</span>
-              </div>
+                className="form-control mb-2"
+                type="email"
+                label="Email"
+                onChange={formik.handleChange}
+                name="Email"
+                variant="outlined"
+                fullWidth
+              />
+              <span className="text-danger">{formik.errors.Email}</span>
+            </div>
 
-              <div className="d-flex flex-column flex-md-row justify-content-center mb-3">
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    className="mb-2 mb-md-0 mx-md-3 w-100 w-md-25"
-                  >
-                    Register
-                  </Button>
-                  <Link to="/admin-login" className="w-100 w-md-50">
-                    <Button variant="contained" className="form-control">
-                      Admin Login
-                    </Button>
-                  </Link>
-                </div>
+            <div className="col-md-12 mb-3">
+              <TextField
+                className="form-control mb-2"
+                type="text"
+                label="Mobile"
+                onChange={formik.handleChange}
+                name="Mobile"
+                variant="outlined"
+                fullWidth
+              />
+              <span className="text-danger">{formik.errors.Mobile}</span>
+            </div>
+
+            <div className="d-flex flex-column flex-md-row justify-content-center mb-4">
+              <Button
+                type="submit"
+                variant="contained"
+                className="mb-2 mb-md-0 mx-md-3 w-100 w-md-25"
+              >
+                Register
+              </Button>
+              <Link to="/admin-login" className="w-100 w-md-50">
+                <Button variant="contained" className="form-control">
+                  Admin Login
+                </Button>
+              </Link>
+            </div>
           </form>
         </div>
       </div>
