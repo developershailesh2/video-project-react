@@ -19,21 +19,21 @@ export function UserRegistration() {
     validationSchema: yup.object({
       UserId: yup
         .string()
-        .required("User id is required")
+        .required("User Id Required")
         .matches(/[A-Za-z]\d[0-9]/, "Only letters and numbers allowed"),
-      UserName: yup.string().required("Username required"),
+      UserName: yup.string().required("Username Required"),
       Password: yup
         .string()
-        .required("Password required")
+        .required("Password Required")
         .min(6, "Password must be at least 6 characters")
         .matches(/[A-Z]/, "Must contain at least 1 Capital Letter")
         .matches(/[a-z]/, "Must contain at least 1 lower case letter")
         .matches(/\d/, "Password must contain at least 1 number"),
       Email: yup
         .string()
-        .required("Email required")
+        .required("Email Required")
         .email("Invalid email format"),
-      Mobile: yup.string().required("Mobile required"),
+      Mobile: yup.string().required("Mobile Required"),
     }),
     onSubmit: (user) => {
       axios.post(`http://127.0.0.1:5050/register-user`, user);
@@ -48,38 +48,40 @@ export function UserRegistration() {
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-90">
       <div className="container-fluid">
-        <div className="w-50 w-md-50 mx-auto rounded">
-          <form onSubmit={formik.handleSubmit}>
-            <dl className="bg-light p-4 rounded m-3">
-              <div className="text-muted mb-2 fw-bold fs-2">
-                User Registration
-              </div>
-              <dd>
-                <TextField
+        <div className="w-75 w-md-100 mx-auto rounded">
+          <form className="row bg-light rounded-2 p-3 mt-4 shadow-lg" onSubmit={formik.handleSubmit}>
+              <div className="mt-3 mb-3 text-warning p-2 fw-semibold fs-2">User Registration</div>
+            <div className="col-md-6 mb-3">
+            <TextField
                   className="form-control mb-2"
                   variant="outlined"
                   type="text"
                   name="UserId"
+                  value={formik.values.UserId}
                   label="User Id"
                   onChange={formik.handleChange}
                   fullWidth
                 />
-              </dd>
-              <dd className="text-danger">{formik.errors.UserId}</dd>
-              <dd>
-                <TextField
+                <span className="mb-2 text-danger">{formik.errors.UserId}</span>
+            </div>  
+            
+
+            <div className="col-md-6 mb-3">
+            <TextField
                   className="form-control mb-2"
                   variant="outlined"
                   type="text"
                   onChange={formik.handleChange}
                   name="UserName"
+                  value={formik.values.UserName}
                   label="User Name"
                   fullWidth
                 />
-              </dd>
-              <dd className="text-danger">{formik.errors.UserName}</dd>
-              <dd>
-                <TextField
+                <span className="text-danger">{formik.errors.UserName}</span>
+            </div>
+
+              <div className="col-md-6 mb-3">
+              <TextField
                   className="form-control mb-2"
                   variant="outlined"
                   label="Password"
@@ -88,10 +90,11 @@ export function UserRegistration() {
                   type="password"
                   fullWidth
                 />
-              </dd>
-              <dd className="text-danger">{formik.errors.Password}</dd>
-              <dd>
-                <TextField
+                <span className="text-danger">{formik.errors.Password}</span>
+              </div>
+
+              <div className="col-md-6 mb-3">
+              <TextField
                   className="form-control mb-2"
                   type="email"
                   label="Email"
@@ -100,10 +103,11 @@ export function UserRegistration() {
                   variant="outlined"
                   fullWidth
                 />
-              </dd>
-              <dd className="text-danger">{formik.errors.Email}</dd>
-              <dd>
-                <TextField
+                <span className="text-danger">{formik.errors.Email}</span>
+              </div>
+
+              <div className="col-md-12 mb-3">
+              <TextField
                   className="form-control mb-2"
                   type="text"
                   label="Mobile"
@@ -112,10 +116,10 @@ export function UserRegistration() {
                   variant="outlined"
                   fullWidth
                 />
-              </dd>
-              <dd className="text-danger">{formik.errors.Mobile}</dd>
-              <dd>
-                <div className="d-flex flex-column flex-md-row justify-content-center">
+                 <span className="text-danger">{formik.errors.Mobile}</span>
+              </div>
+
+              <div className="d-flex flex-column flex-md-row justify-content-center mb-3">
                   <Button
                     type="submit"
                     variant="contained"
@@ -129,8 +133,6 @@ export function UserRegistration() {
                     </Button>
                   </Link>
                 </div>
-              </dd>
-            </dl>
           </form>
         </div>
       </div>

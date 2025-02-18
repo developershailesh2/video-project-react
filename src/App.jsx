@@ -7,12 +7,13 @@ import { VideoHome } from "./Components/video-home";
 import { AdminLogin } from "./Components/admin-login";
 import { UserLogin } from "./Components/user-login";
 import { UserRegistration } from "./Components/user-register";
+import "animate.css";
 
 function App() {
   return (
     <div className="body-background">
-      <div className="bg-shade">
-        <h2 className="text-center m-2 bg-dark text-white p-3 rounded">
+      <div className="bg-shade ">
+        <h2 className="animate__animated animate__fadeInRight text-center shadow-lg m-2 bg-dark text-white p-3 rounded">
           Technologies Video Library
         </h2>
         <BrowserRouter>
