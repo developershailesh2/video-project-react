@@ -8,11 +8,15 @@ import { AdminLogin } from "./Components/admin-login";
 import { UserLogin } from "./Components/user-login";
 import { UserRegistration } from "./Components/user-register";
 import "animate.css";
+import { UserDashBoard } from "./Components/user-dashboard";
+import { AdminDashBoard } from "./Components/admin-dashboard";
+import { AdminAddVideo } from "./Components/admin-add-video";
+
 
 function App() {
   return (
     <div className="body-background">
-      <div className="bg-shade ">
+      <div className="bg-shade">
         <h2 className="animate__animated animate__fadeInRight text-center shadow-lg m-2 bg-dark text-white p-3 rounded">
           Technologies Video Library
         </h2>
@@ -22,6 +26,9 @@ function App() {
             <Route path="admin-login" element={<AdminLogin />} />
             <Route path="user-login" element={<UserLogin />} />
             <Route path="user-register" element={<UserRegistration />} />
+            <Route path="user-dashboard" element={<UserDashBoard />} />
+            <Route path="admin-dashboard" element={<AdminDashBoard />} />
+            <Route path="add-video" element={<AdminAddVideo />} />
           </Routes>
         </BrowserRouter>
       </div>

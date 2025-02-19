@@ -1,11 +1,15 @@
-import { Button, TextField } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { useFormik, yupToFormErrors } from "formik";
+import { useFormik } from "formik";
 import axios from "axios";
 import Swal from "sweetalert2";
 import * as yup from "yup";
+import { Button, TextField } from "@mui/material";
+import { useCookies } from "react-cookie";
 
 export function AdminLogin() {
+  
+  const[cookies , setCookies ] = useCookies(["userid"]);
+
   let navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -22,6 +26,11 @@ export function AdminLogin() {
         var user = response.data.find((item) => item.UserId === admin.UserId);
         if (user) {
           if (admin.Password === user.Password) {
+            setCookies("userid",user.UserId);
+            Swal.fire({
+                      icon: "success",
+                      title: "Login Successful",
+                        });
             navigate("/admin-dashboard");
           } else {
             Swal.fire({
