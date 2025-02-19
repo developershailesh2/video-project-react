@@ -39,13 +39,15 @@ export function AdminDashBoard() {
 
   return (
     <div className="bg-light m-2 p-2">
-      <h3>
-        Welcome Admin <span>{Cookies["userid"]}</span>{" "}
-        <Button onClick={handleSignOut} variant="contained" color="error">
+      <h3 className="d-flex justify-content-evenly">
+         <span className="animate__animated animate__fadeInLeft text-muted">Admin {Cookies["userid"]}</span>{" "}
+        <Tooltip title="Log Out" arrow placement="right">
+        <Button className="animate__animated animate__fadeInRight " onClick={handleSignOut} variant="contained" color="error">
           Log Out
         </Button>
+        </Tooltip>
       </h3>
-
+    
       <div className="mt-3">
         <Link to="/add-video">
           {" "}
@@ -54,11 +56,11 @@ export function AdminDashBoard() {
         </Link>
       </div>
 
-          <div className="row">
+          <div className="row bg-info rounded-2 mt-3">
            
               {
                 videos.map(video => 
-                <div className="col-md-4 mb-4" key={video.VideoId}>
+                <div className="col-md-4 mt-4 mb-4" key={video.VideoId}>
                   <div className="card h-100 m-3 p-3">
                   <div className="card-body">
                       <iframe src={video.Url} 
@@ -78,12 +80,16 @@ export function AdminDashBoard() {
                   </div>
                   <div className="mt-auto card-footer bg-white">
                   <div className="d-flex justify-content-evenly">
+                    <Tooltip placement="top" title="Edit" arrow>
                     <Link to={`/edit-video/${video.VideoId}`}>
                     <Button variant="outlined" color="secondary">EDIT</Button>
                     </Link>
+                    </Tooltip>
+                    <Tooltip placement="top" title="Delete" arrow>
                     <Link to={`/delete-video/${video.VideoId}`}>
                     <Button variant="outlined" color="error">DELETE</Button>
                     </Link>
+                    </Tooltip>
                   </div>
                   </div>
                 </div>
