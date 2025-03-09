@@ -45,15 +45,11 @@ export function UserDashBoard() {
   }
 
   function handleCountChange(value) {
-    if (value >= 1000 && value < 900000)
-      return `${(value / 10000).toFixed(1)}K`;
-    if (value >= 1000000) return `${(value / 100000).toFixed(1)}M`;
-    if (value >= 2000000) return `${(value / 200000).toFixed(1)}M`;
-    if (value >= 3000000) return `${(value / 300000).toFixed(1)}M`;
-    if (value >= 4000000) return `${(value / 400000).toFixed(1)}M`;
-    if (value >= 5000000) return `${(value / 500000).toFixed(1)}M`;
+    if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
+    if (value >= 1000) return `${(value / 1000).toFixed(1)}K`;
     return value.toLocaleString();
   }
+  
 
   return (
     <>
