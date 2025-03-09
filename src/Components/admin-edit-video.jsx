@@ -4,7 +4,8 @@ import { useFormik } from "formik";
 import Swal from "sweetalert2";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import * as yup from "yup";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
+import { Textarea } from "@mui/joy";
 
 export function AdminEditVideo() {
   const [categories, setCategories] = useState([]);
@@ -75,116 +76,138 @@ export function AdminEditVideo() {
   }, []);
 
   return (
-    <div className="container-fluid">
+    <div className="d-flex justify-content-evenly align-content-center">
       <form
-        className="d-flex justify-content-center"
+        className="animate__animated animate__lightSpeedInRight bg-light shadow-lg row justify-content-center m-4 p-4 w-100 border border-primary rounded-4"
         onSubmit={formik.handleSubmit}
       >
-        <dl className=" w-50">
-          <dt>Video Id</dt>
-          <dd>
-            <input
-              onChange={formik.handleChange}
-              value={formik.values.VideoId}
-              className="form-control"
-              type="number"
-              name="VideoId"
-              disabled
-            />
-          </dd>
+        <div className="justify-content-center mt-3 mb-3 text-center fs-4">
+          Update Video Details
+        </div>
+        <div className="col-md-3 mt-3 mb-3">
+          <TextField
+            onChange={formik.handleChange}
+            value={formik.values.VideoId}
+            type="number"
+            name="VideoId"
+            label="Video Id"
+            color="secondary"
+            className="form-control"
+            disabled
+          />
+          <span className="text-danger">{formik.errors.VideoId}</span>
+        </div>
 
-          <dt>Title</dt>
-          <dd>
-            <input
-              value={formik.values.Title}
-              onChange={formik.handleChange}
-              type="text"
-              name="Title"
-              className="form-control"
-            />
-          </dd>
-          <dd className="text-danger">{formik.errors.Title}</dd>
-          <dt>URL</dt>
-          <dd>
-            <input
-              value={formik.values.Url}
-              onChange={formik.handleChange}
-              type="text"
-              className="form-control"
-              name="Url"
-            />
-          </dd>
-          <dd className="text-danger">{formik.errors.Url}</dd>
-          <dt>Description</dt>
-          <dd>
-            <textarea
-              value={formik.values.Description}
-              onChange={formik.handleChange}
-              rows="2"
-              cols="40"
-              className="form-control"
-              name="Description"
-            ></textarea>
-          </dd>
-          <dd className="text-danger">{formik.errors.Description}</dd>
-          <dt>Likes</dt>
-          <dd>
-            <input
-              value={formik.values.Likes}
-              onChange={formik.handleChange}
-              type="number"
-              name="Likes"
-              className="form-control"
-            />
-          </dd>
-          <dd className="text-danger">{formik.errors.Likes}</dd>
-          <dt>Dislikes</dt>
-          <dd>
-            <input
-              value={formik.values.Dislikes}
-              onChange={formik.handleChange}
-              type="number"
-              className="form-control"
-              name="Dislikes"
-            />
-          </dd>
-          <dd className="text-danger">{formik.errors.Dislikes}</dd>
-          <dt>Views</dt>
-          <dd>
-            <input
-              value={formik.values.Views}
-              onChange={formik.handleChange}
-              type="number"
-              name="Views"
-              className="form-control"
-            />
-          </dd>
-          <dd className="text-danger">{formik.errors.Views}</dd>
-          <dt>Select Category</dt>
-          <dd>
-            <select
-              value={formik.values.CategoryId}
-              onChange={formik.handleChange}
-              className="form-select"
-              name="CategoryId"
-            >
-              {categories.map((category) => (
-                <option key={category.CategoryId} value={category.CategoryName}>
-                  {category.CategoryName}
-                </option>
-              ))}
-            </select>
-          </dd>
-          <dd className="text-danger">{formik.errors.CategoryId}</dd>
-          <div className="d-flex justify-content-evenly m-3">
-            <Button type="submit" variant="outlined" color="success">
-              Save
+        <div className="col-md-3 mt-3 mb-3">
+          <TextField
+            value={formik.values.Title}
+            onChange={formik.handleChange}
+            type="text"
+            name="Title"
+            label="Title"
+            className="form-control"
+            color="secondary"
+            placeholder="Title"
+          />
+          <span className="text-danger">{formik.errors.Title}</span>
+        </div>
+
+        <div className="col-md-5 mt-3 mb-3">
+          <TextField
+            value={formik.values.Url}
+            onChange={formik.handleChange}
+            type="text"
+            className="form-control"
+            label="URL"
+            color="secondary"
+            name="Url"
+          />
+          <span className="text-danger">{formik.errors.Url}</span>
+        </div>
+
+        <div className="col-md-11 mt-3 mb-3">
+          <Textarea
+            value={formik.values.Description}
+            onChange={formik.handleChange}
+            rows="10"
+            cols="50"
+            className="form-control"
+            name="Description"
+            label="Description"
+            color="success"
+          />
+
+          <span className="text-danger text-center mb-3">
+            {formik.errors.Description}
+          </span>
+        </div>
+
+        <div className="col-md-4 mt-3 mb-3 ">
+          <TextField
+            value={formik.values.Likes}
+            onChange={formik.handleChange}
+            type="number"
+            name="Likes"
+            label="Likes"
+            color="secondary"
+            className="form-control"
+          />
+          <span className="text-danger">{formik.errors.Likes}</span>
+        </div>
+
+        <div className="col-md-4 mt-3 mb-3 ">
+          <TextField
+            value={formik.values.Dislikes}
+            onChange={formik.handleChange}
+            type="number"
+            color="secondary"
+            className="form-control"
+            label="Dislikes"
+            name="Dislikes"
+          />
+          <span className="text-danger">{formik.errors.Dislikes}</span>
+        </div>
+
+        <div className="col-md-3 mt-3 mb-3">
+          <TextField
+            value={formik.values.Views}
+            onChange={formik.handleChange}
+            type="number"
+            name="Views"
+            color="secondary"
+            label="Views"
+            className="form-control"
+          />
+          <span className="text-danger">{formik.errors.Views}</span>
+        </div>
+
+        <div className="col-md-5 mt-3 mb-3">
+          <select
+            value={formik.values.CategoryId}
+            onChange={formik.handleChange}
+            className="form-select"
+            label="Select Category"
+            name="CategoryId"
+          >
+            {categories.map((category) => (
+              <option key={category.CategoryId} value={category.CategoryName}>
+                {category.CategoryName}
+              </option>
+            ))}
+          </select>
+          <span className="text-danger">{formik.errors.CategoryId}</span>
+        </div>
+
+        <div className="d-flex justify-content-evenly m-3">
+          <Button type="submit" variant="outlined" color="success">
+            Save
+          </Button>
+          <Link to="/admin-dashboard">
+            <Button variant="outlined" color="error">
+              Cancel
             </Button>
-            <Link to="/admin-dashboard">
-              <Button variant="outlined" color="error">Cancel</Button>
-            </Link>
-          </div>
-        </dl>
+          </Link>
+        </div>
       </form>
     </div>
   );
