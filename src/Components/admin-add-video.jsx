@@ -110,8 +110,8 @@ export function AdminAddVideo() {
         className="row justify-content-center w-100 border border-dark rounded-3 m-4 p-4"
         onSubmit={formik.handleSubmit}
       >
-        <div className="mb-3 bg-dark text-white rounded p-2 text-center fw-bold fs-3">
-          Add Video
+        <div className="mb-3 text-dark rounded p-2 text-center fs-3">
+          Add Video <span className="bi bi-camera-video"></span>
         </div>
         <div className="col-md-3 mt-2 mb-3">
           <TextField
@@ -210,6 +210,7 @@ export function AdminAddVideo() {
         <div className="col-md-5 mb-3">
           <FormControl fullWidth>
             <Select
+              className="bg-white"
               name="CategoryId"
               value={formik.values.CategoryId}
               onChange={formik.handleChange}

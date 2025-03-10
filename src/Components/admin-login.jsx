@@ -7,8 +7,7 @@ import { Button, TextField } from "@mui/material";
 import { useCookies } from "react-cookie";
 
 export function AdminLogin() {
-  
-  const[cookies , setCookies ] = useCookies(["userid"]);
+  const [cookies, setCookies] = useCookies(["userid"]);
 
   let navigate = useNavigate();
   const formik = useFormik({
@@ -26,11 +25,11 @@ export function AdminLogin() {
         var user = response.data.find((item) => item.UserId === admin.UserId);
         if (user) {
           if (admin.Password === user.Password) {
-            setCookies("userid",user.UserId);
+            setCookies("userid", user.UserId);
             Swal.fire({
-                      icon: "success",
-                      title: "Login Successful",
-                        });
+              icon: "success",
+              title: "Login Successful",
+            });
             navigate("/admin-dashboard");
           } else {
             Swal.fire({

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import "./admin-delete-video.css";
 
 export function AdminDeleteVideo() {
   const [videos, setVideos] = useState([
@@ -60,24 +61,32 @@ export function AdminDeleteVideo() {
 
   return (
     <div className="container-fluid">
-      <h4>Are You Sure Want To Delete</h4>
-      <div className="row bg-danger rounded-1 fs-5 fw-semibold m-3 p-3">
-        <div className="col-md-6 text-light">Title</div>
+      <h4 className="animate__animated animate__fadeInLeft fs-3 text-danger text-center rounded-2 p-3">
+        Are You Sure Want To Delete?
+      </h4>
+      <div className="row animate__animated  animate__fadeInRight rounded-1 fs-5 fw-semibold m-3 p-3">
+        <div className="col-md-6 text-dark">Title</div>
         <div className="col-md-4 text-warning fs-4">{videos[0].Title}</div>
-        <div className="col-md-6 mt-3 text-light">Description</div>
-        <div className="col-md-4 mt-3 text-dark">{videos[0].Description}</div>
-        <div className="col-md-6 text-light mt-3">Likes</div>
-        <div className="col-md-4 mt-3 text-dark">{videos[0].Likes}</div>
+        <div className="col-md-6 mt-3 text-dark">Description</div>
+        <div className="col-md-4 mt-3 text-info">{videos[0].Description}</div>
+        <div className="col-md-6 text-dark mt-3">Likes</div>
+        <div className="col-md-4 bi bi-hand-thumbs-up-fill mt-3 text-dark">
+          {videos[0].Likes}
+        </div>
 
-        <div className="col-md-6 text-light mt-3">Dislikes</div>
-        <div className="col-md-4 mt-3 text-dark">{videos[0].Dislikes}</div>
-        <div className="col-md-6 text-light mt-3">Views</div>
-        <div className="col-md-4 mt-3 text-dark">{videos[0].Views}</div>
+        <div className="col-md-6 text-dark mt-3">Dislikes</div>
+        <div className="col-md-4 bi bi-hand-thumbs-down-fill mt-3 text-dark">
+          {videos[0].Dislikes}
+        </div>
+        <div className="col-md-6 text-dark  mt-3">Views</div>
+        <div className="col-md-4 mt-3 bi bi-eye-fill text-dark">
+          {videos[0].Views}
+        </div>
       </div>
       <div className="d-flex justify-content-center mb-4">
         <Tooltip title="Delete Video" placement="left" arrow>
           <Button onClick={handleDeleteClick} variant="contained" color="error">
-            <span className="fs-5 bi bi-trash-fill"></span>
+            <span className="fs-5 bi bi-trash-fill fw-bold">Delete</span>
           </Button>
         </Tooltip>
 

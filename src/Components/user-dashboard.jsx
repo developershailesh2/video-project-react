@@ -11,6 +11,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Cookies, useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
+import { addToWatchLater } from "../slicers/video-slicer";
+import store from "../store/store";
 
 export function UserDashBoard() {
   const [Cookies, setCookie, removeCookie] = useCookies(["username"]);
@@ -28,6 +32,14 @@ export function UserDashBoard() {
     },
   ]);
 
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
+
+  function handlesignOut() {
+    removeCookie("username");
+    navigate("/user-login");
+  }
+
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:5050/get-videos`)
@@ -37,11 +49,12 @@ export function UserDashBoard() {
       .catch(console.error("error"));
   }, []);
 
-  let navigate = useNavigate();
-
-  function handlesignOut() {
-    removeCookie("username");
-    navigate("/user-login");
+  function handleSaveClick(video) {
+    Swal.fire({
+      icon: "success",
+      text: "Video Saved",
+    });
+    dispatch(addToWatchLater(video));
   }
 
   function handleCountChange(value) {
@@ -54,7 +67,7 @@ export function UserDashBoard() {
     <>
       <div className="text-white m-2 p-2 rounded-2">
         <div className="d-flex justify-content-evenly">
-          <span className="animate__animated animate__fadeInLeft text-dark fw-bold fs-4">
+          <span className="animate__animated animate__fadeInLeft text-light fs-3 fw-bolder">
             Welcome {Cookies["username"]}{" "}
           </span>{" "}
           <div>
@@ -69,10 +82,15 @@ export function UserDashBoard() {
               </Button>
             </Tooltip>
           </div>
+          <div>
+            <Button className="fw-bold" variant="contained" color="warning">
+              {store.getState().store.VideosCount}
+            </Button>
+          </div>
         </div>
       </div>
 
-      <div className="d-flex justify-content-center row border border-dark m-4 m-md-3 rounded p-3">
+      <div className="d-flex justify-content-center row m-4 m-md-3 rounded p-3">
         <div className="col-12 col-md-6 col-lg-3 mb-3 mb-md-0">
           <div className="input-group">
             <TextField
@@ -85,7 +103,7 @@ export function UserDashBoard() {
           </div>
         </div>
 
-        <div className="col-12 col-md-6 col-lg-3">
+        <div className="col-12 col-md-6 col-lg-3 rounded">
           <div className="mb-2 mb-md-0">
             {/* <select className="form-select">
                 <option value="">Select Category</option>
@@ -94,7 +112,7 @@ export function UserDashBoard() {
                 <option value="python">Python</option>
                 <option value="cloud">Cloud</option>
               </select> */}
-            <FormControl fullWidth>
+            <FormControl className="bg-light" color="primary" fullWidth>
               <InputLabel id="select-category">Select Category</InputLabel>
               <Select
                 label="Select Category"
@@ -112,10 +130,7 @@ export function UserDashBoard() {
         </div>
       </div>
 
-      <div
-        className="row m-3 bg-light rounded-2 p-3 mb-3 "
-        style={{ animationDuration: "1.45s" }}
-      >
+      <div className="row m-3 p-3 mb-3 " style={{ animationDuration: "1.45s" }}>
         {videos.map((video) => (
           <div
             className="animate__animated animate__fadeInLeft col-md-3 mb-4"
@@ -158,6 +173,7 @@ export function UserDashBoard() {
               <div className="mt-auto card-footer bg-light">
                 <div className="d-flex justify-content-center m-2">
                   <Button
+                    onClick={() => handleSaveClick(video)}
                     className="text-uppercase"
                     variant="contained"
                     color="warning"

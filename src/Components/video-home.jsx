@@ -20,7 +20,7 @@ export function VideoHome() {
         <Button
           className="animate__animated animate__fadeInRight fw-bold fs-6"
           variant="contained"
-          color="success"
+          color="primary"
         >
           User Login
         </Button>

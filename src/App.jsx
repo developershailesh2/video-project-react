@@ -18,9 +18,9 @@ function App() {
   return (
     <div className="body-background">
       <div className="bg-shade">
-        <h2 className="animate__animated animate__fadeInRight text-center shadow-lg m-2 bg-dark text-white p-3 rounded">
+        <div className="fs-2 fw-bold bg-dark text-uppercase animate__animated animate__fadeInRight text-center text-warning shadow-lg m-2 p-3 rounded">
           Technologies Video Library
-        </h2>
+        </div>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<VideoHome />} />

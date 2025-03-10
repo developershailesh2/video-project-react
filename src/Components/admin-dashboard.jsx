@@ -38,9 +38,9 @@ export function AdminDashBoard() {
   }
 
   return (
-    <div className="bg-light m-2 p-2">
-      <h3 className="d-flex justify-content-evenly">
-        <span className="animate__animated animate__fadeInLeft text-muted">
+    <div className="m-2 p-2">
+      <div className="d-flex justify-content-evenly">
+        <span className="animate__animated animate__fadeInLeft text-light  text-bg-primary rounded-3 p-2">
           Admin {Cookies["userid"]}
         </span>{" "}
         <Tooltip title="Log Out" arrow placement="right">
@@ -53,7 +53,7 @@ export function AdminDashBoard() {
             Log Out
           </Button>
         </Tooltip>
-      </h3>
+      </div>
 
       <div className="mt-3">
         <Link to="/add-video">
@@ -66,7 +66,7 @@ export function AdminDashBoard() {
         </Link>
       </div>
 
-      <div className="row bg-info rounded-2 mt-3">
+      <div className="row mt-3">
         {videos.map((video) => (
           <div className="col-md-4 mt-4 mb-4" key={video.VideoId}>
             <div className="card h-100 m-3 p-3">

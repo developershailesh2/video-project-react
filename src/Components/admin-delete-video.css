@@ -1,0 +1,6 @@
+.row {
+  background-color: hsla(0, 0%, 100%, 0.3);
+  backdrop-filter: blur(0.1px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(165, 162, 226, 0.906);
+}
