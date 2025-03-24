@@ -9,13 +9,35 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-var connectionString = "mongodb://127.0.0.1:27017";
+var connectionString =
+  "mongodb+srv://asksam1432:u7Qxw2HxrjfJDd6Z@cluster0.fxtfa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+var client = new mongoClient(connectionString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+let database;
+
+function connectDataBase() {
+  try {
+    client.connect(connectionString).then(() => {
+      database = client.db("videodb");
+      console.log("Mongo db connected successfully");
+    });
+  } catch (error) {
+    console.log("Faild to connect");
+    process.exit(1);
+  }
+}
+
+connectDataBase();
 
 //API Routes
 
 app.get("/get-admin", (req, res) => {
-  mongoClient.connect(connectionString).then((connectionObject) => {
-    var database = connectionObject.db("videodb");
+  mongoClient.connect(connectionString).then((connectionObj) => {
+    database = connectionObj.db("videodb");
     database
       .collection("tbladmin")
       .find({})
